@@ -9,7 +9,7 @@
       enable = true;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/${username}/maxmados";
+    flake = "/home/${username}/maxmadnix";
   };
 
   environment.systemPackages = with pkgs; [
