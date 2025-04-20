@@ -13,29 +13,47 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
-    #host = "nixlap";
+    host = "nixlap";
     profile = "intel";
     username = "maxmad";
   in {
     nixosConfigurations = {
-
-      nixnuc = nixpkgs.lib.nixosSystem {
+      amd = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
           inherit username;
-          host = "nixnuc";
+          inherit host;
           inherit profile;
         };
-        modules = [./profiles/intel];
+        modules = [./profiles/amd];
       };
-      
-       nixlap = nixpkgs.lib.nixosSystem {
+      nvidia = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
           inherit username;
-          host = "nixlap";
+          inherit host;
+          inherit profile;
+        };
+        modules = [./profiles/nvidia];
+      };
+      nvidia-laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          inherit host;
+          inherit profile;
+        };
+        modules = [./profiles/nvidia-laptop];
+      };
+      intel = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          inherit host;
           inherit profile;
         };
         modules = [./profiles/intel];
