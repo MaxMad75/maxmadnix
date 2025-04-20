@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    audacity
+    keepassxc
     discord
     nodejs
-    obs-studio
+
     sparrow
   ];
 }
