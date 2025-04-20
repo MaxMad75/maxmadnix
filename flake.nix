@@ -45,7 +45,7 @@
         specialArgs = {
           inherit inputs;
           inherit username;
-          inherit host;
+          #inherit host;
           inherit profile;
         };
         modules = [./profiles/vm];
